@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from 'src/app/@modules/login/login.component';
+import { LoginComponent } from 'src/app/@features/login/login.component';
 import { AuthService } from 'src/app/@core/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
