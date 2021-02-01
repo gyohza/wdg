@@ -14,8 +14,10 @@ export class ApiInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const url = new URL(`${environment.REQRES_URL}${request.url}`);
+    url.searchParams.append('delay', '2');
     request = request.clone({
-      url: `${environment.REQRES_URL}${request.url}`,
+      url: url.toString(),
       setHeaders: {
         'Content-Type': 'application/json',
       },
