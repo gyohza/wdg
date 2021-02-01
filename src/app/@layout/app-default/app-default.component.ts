@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AuthService } from 'src/app/@core/services/auth.service';
 
 @Component({
   selector: 'app-app-default',
@@ -16,6 +17,12 @@ export class AppDefaultComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private _auth: AuthService
+  ) {}
 
+  onLogout() {
+    this._auth.performLogout();
+  }
 }

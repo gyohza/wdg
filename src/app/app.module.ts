@@ -15,12 +15,24 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ErrorScreenComponent } from './@features/error-screen/error-screen.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { UserComponent } from './@features/user/user.component';
+import { EditUserComponent } from './@features/user/edit-user/edit-user.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppDefaultComponent,
     ErrorScreenComponent,
+    UserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,13 +46,21 @@ import { ErrorScreenComponent } from './@features/error-screen/error-screen.comp
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true,
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

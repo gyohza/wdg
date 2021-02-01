@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from 'src/app/@features/login/login.component';
-import { AuthService } from 'src/app/@core/services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -21,12 +22,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   exports: [
     LoginComponent,
   ],
-  providers: [
-    AuthService,
-  ],
+  providers: [],
 })
 export class LoginModule { }

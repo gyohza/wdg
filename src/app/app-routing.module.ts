@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './@core/guards/auth.guard';
 import { ErrorScreenComponent } from './@features/error-screen/error-screen.component';
 import { LoginComponent } from './@features/login/login.component';
 import { AppDefaultComponent } from './@layout/app-default/app-default.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {
     path: 'app',
     component: AppDefaultComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'not-found',
