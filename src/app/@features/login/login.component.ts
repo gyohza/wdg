@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     this._auth.performLogin({email, password}).subscribe(
-      res => this._router.navigate(['/app/home']),
+      res => this._router.navigate(['/app/users']),
       ({error: {error}}) => this.loginError = error
     );
   }

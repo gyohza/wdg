@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/@core/services/user.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -9,32 +9,37 @@ import { User } from 'src/app/@shared/models/user.model';
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.scss']
 })
-export class EditUserComponent {
+export class EditUserComponent implements OnInit {
   userForm = this.fb.group({
-    company: null,
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
-    address: [null, Validators.required],
-    address2: null,
-    city: [null, Validators.required],
-    state: [null, Validators.required],
-    postalCode: [null, Validators.compose([
-      Validators.required, Validators.minLength(5), Validators.maxLength(5)])
-    ],
-    shipping: ['free', Validators.required]
   });
 
-  public user: User;
+  public user: User = null;
 
   constructor(
     private fb: FormBuilder,
     private _svc: UserService,
     public dialogRef: MatDialogRef<EditUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User
+    @Inject(MAT_DIALOG_DATA) public data: number
   ) {}
 
+  ngOnInit(): void {
+    this._svc.getUser(this.data).subscribe(
+      res => this.user = res
+    )
+  }
+
   onSubmit() {
-    alert('Thanks!');
+    const {firstName, lastName} = this.userForm.value;
+    this.user = Object.assign(this.user, {
+      first_name: firstName,
+      last_name: lastName
+    });
+    this._svc.updateUser(this.user).subscribe(
+      res => this.dialogRef.close('User updated!'),
+      err => this.dialogRef.close('Uh-oh. Something went wrong.')
+    );
   }
 
   closeSelf() {

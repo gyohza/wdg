@@ -1,22 +1,17 @@
 <div class="mat-elevation-z8">
-  <table mat-table class="full-width-table" aria-label="Users">
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.first_name}} {{row.last_name}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+  <div id="card-container">
+    <mat-card *ngFor="let user of dataSource">
+      <mat-card-header>
+        <mat-card-title>
+          {{ user.first_name }} {{ user.last_name }}
+        </mat-card-title>
+      </mat-card-header>
+      <img src="{{user.avatar}}" alt="">
+      <mat-icon class="remove-user-btn"
+        (click)="$event.stopPropagation(); removeUser(user.id)"
+      >delete</mat-icon>
+    </mat-card>
+  </div>
 
   <mat-paginator #paginator
       [length]="paging.total"
@@ -24,4 +19,6 @@
       [pageSize]="paging.per_page"
       (page)="loadUsers($event)">
   </mat-paginator>
+
+  <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
 </div>

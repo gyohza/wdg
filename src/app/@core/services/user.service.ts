@@ -14,8 +14,27 @@ export class UserService {
   ) { }
 
   getUsers(req: PagedRequest = new PagedRequest()) {
-    return this._http.get<PagedResponse<User>>(
+    return this._http.get<PagedResponse<User[]>>(
       `users?${new URLSearchParams(Object.entries(req))}`
+    );
+  }
+
+  getUser(id: number) {
+    return this._http.get<User>(
+      `users/${id}`
+    );
+  }
+
+  updateUser(user: User) {
+    return this._http.put<User>(
+      `users/${user.id}`,
+      { name: `${user.first_name} ${user.last_name}`}
+    );
+  }
+
+  deleteUser(id: number) {
+    return this._http.delete<User>(
+      `users/${id}`
     );
   }
 }

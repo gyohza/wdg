@@ -15,3 +15,14 @@
   top: 0;
   z-index: 1;
 }
+
+.mat-flat-button {
+  border-radius: 0px;
+  color: #fff;
+}
+
+.mat-flat-button:hover {
+  color: #000;
+  background-color: #ddd;
+  transition: color 0.4s, background-color 0.4s;
+}
