@@ -35,10 +35,10 @@ npm install
 ng serve
 ```
 
-5. Wait for the buildup process to complete.
+5. Wait for the buildup process to complete;
 
-6a. You can check if the application is running properly by accessing [http://localhost:4200/].
+6. You can check if the application is running properly by accessing [http://localhost:4200/];
 
-6b. The application will be served on port `4200` by default. In case of any warnings regarding this port, **make sure it's not being blocked by some other application, _especially_ another Angular app**.
+7. You may quit the application by pressing `Ctrl`+`C` or by exiting the terminal.
 
-6c. You may quit the application by pressing `Ctrl`+`C` or by exiting the terminal.
+Note: The application will be served on port `4200` by default. In case of any warnings regarding this port, **make sure it's not being blocked by some other application, _especially_ another Angular app**.
