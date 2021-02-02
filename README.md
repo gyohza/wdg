@@ -21,7 +21,9 @@ git clone https://github.com/gyohza/wdg.git
 
 2. After the cloning process is finished, enter the repository's directory with:
 
-```cd wdg```
+```bash
+cd wdg
+```
 
 3. Install the required packages by running:
 
