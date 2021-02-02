@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Confirm action</h1>
+<div mat-dialog-content>
+  <p>{{data}}</p>
+</div>
+<div mat-dialog-actions>
+  <button (click)="closeSelf(true)" cdkFocusInitial
+    class="mat-flat-button mat-warn"
+  >Yes, please</button>
+  <button (click)="closeSelf(false)"
+    class="mat-flat-button mat-primary" style="float: right;"
+  >Get me out of here</button>
+</div>

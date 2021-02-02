@@ -11,6 +11,8 @@ import { ErrorScreenComponent } from './@features/error-screen/error-screen.comp
 import { UserModule } from './@features/user/user.module';
 import { AppDefaultModule } from './@layout/app-default/app-default.module';
 import { AppRoutingModule } from './app-routing.module';
+import { ConfirmationDialogComponent } from './@shared/components/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogModule } from './@shared/components/confirmation-dialog/confirmation-dialog.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     LayoutModule,
     UserModule,
     AppDefaultModule,
+    ConfirmationDialogModule,
   ],
   providers: [
     {

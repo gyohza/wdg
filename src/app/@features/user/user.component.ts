@@ -7,6 +7,7 @@ import { User } from 'src/app/@shared/models/user.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ConfirmationDialogComponent } from 'src/app/@shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -64,7 +65,7 @@ export class UserComponent implements OnInit {
 
   openDialog(id: number) {
     const dialogRef = this.dialog.open(EditUserComponent, {
-      width: '100%',
+      width: '300px',
       data: id,
     });
 
@@ -79,10 +80,10 @@ export class UserComponent implements OnInit {
           theme = 'mat-warn';
         } else {
           msg = result;
-          theme = 'mat-accent';
+          theme = 'mat-primary';
         }
         
-        this.snack.open(msg, 'Dispensar', {
+        this.snack.open(msg, 'Dismiss', {
           duration: 3000,
           panelClass: ['mat-toolbar', theme],
         });
@@ -92,7 +93,49 @@ export class UserComponent implements OnInit {
     );
   }
 
-  removeUser(id: number) {
-    
+  removeUser(user: User) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '400px',
+      data: `Confirm removal of ${user.email} from database?`,
+    });
+
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (!result) return;
+
+        let msg, theme;
+        
+        if (result instanceof Error) {
+          this.snack.open(result.message, 'Dismiss', {
+            duration: 3000,
+            panelClass: ['mat-toolbar', 'mat-warn'],
+          });
+        } else {
+          this.isLoading = true;
+
+          this._svc.deleteUser(user.id).subscribe(
+            res => {
+              msg = `Removed ${user.email} from database.`;
+              theme = 'mat-primary';
+
+              this.loadUsers();
+            },
+            err => {
+              console.error(err);
+              msg = `Failed to remove ${user.email} from database.`;
+              theme = 'mat-warn';
+            },
+            () => {
+              this.isLoading = false;
+              
+              this.snack.open(msg, 'Dismiss', {
+                duration: 3000,
+                panelClass: ['mat-toolbar', theme],
+              });
+            }
+          );
+        }
+      }
+    );
   }
 }

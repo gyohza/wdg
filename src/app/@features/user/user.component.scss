@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
 mat-paginator, mat-progress-bar {
-  position: absolute;
+  position: fixed;
+  left: 0px;
   bottom: 0px;
   width: 100%;
 }
 
 #card-container {
   display: grid;
-  padding: 20px;
+  padding: 10px;
+  padding-bottom: 128px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  height: calc(100vh - 128px);
+  height: 90vh;
   overflow: hidden;
 
   mat-card {
@@ -20,20 +22,20 @@ mat-paginator, mat-progress-bar {
     grid-template-columns: repeat(7, 0.35fr) 1.5fr;
     grid-template-rows: 80px 1fr 60px;
     cursor: pointer;
-    margin: 20px;
+    margin: 10px;
     transform: scale(0.98);
     transition: transform 0.3s;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     mat-card-header {
       padding: 20px;
       grid-area: span 1 / span 7;
       text-align: left;
-
-      mat-card-title {
+      
+      @mixin title {
         font-family: 'PT Sans', sans-serif !important;
         line-height: 0.8em;
         text-indent: -1em;
@@ -41,6 +43,15 @@ mat-paginator, mat-progress-bar {
         padding-bottom: 10px;
         font-size: 36px;
         overflow: hidden;
+      }
+
+      mat-card-title {
+        @include title;
+        font-size: 36px;
+      }
+      mat-card-subtitle {
+        @include title;
+        font-size: 18px;
       }
     }
 

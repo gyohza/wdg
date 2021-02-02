@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PagedRequest } from 'src/app/@shared/models/paged-request.model';
 import { PagedResponse } from 'src/app/@shared/models/paged-response.model';
+import { Response } from 'src/app/@shared/models/response.model';
 import { User } from 'src/app/@shared/models/user.model';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class UserService {
   }
 
   getUser(id: number) {
-    return this._http.get<User>(
+    return this._http.get<Response<User>>(
       `users/${id}`
     );
   }

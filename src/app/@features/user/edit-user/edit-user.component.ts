@@ -15,6 +15,8 @@ export class EditUserComponent implements OnInit {
     lastName: [null, Validators.required],
   });
 
+  public isLoading: boolean = true;
+
   public user: User = null;
 
   constructor(
@@ -26,11 +28,19 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit(): void {
     this._svc.getUser(this.data).subscribe(
-      res => this.user = res
+      res => {
+        this.user = res.data;
+        this.userForm.patchValue({
+          firstName: this.user.first_name,
+          lastName: this.user.last_name,
+        });
+        this.isLoading = false;
+      }
     )
   }
 
   onSubmit() {
+    this.isLoading = true;
     const {firstName, lastName} = this.userForm.value;
     this.user = Object.assign(this.user, {
       first_name: firstName,
