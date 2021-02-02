@@ -61,6 +61,36 @@
   }
 }
 
+@keyframes wiggly {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+  80% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes tilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(6deg);
+  }
+}
+
 #outer-container {
   font-family: "Overpass Mono", monospace;
   overflow: hidden;
@@ -79,6 +109,8 @@
     color: #3f51b5;
 
     > h1 {
+      animation: tilt 2.8s;
+      transform: rotate(6deg);
       height: 190px;
       font-family: "Overpass Mono", monospace;
       font-size: 190px;
@@ -86,6 +118,7 @@
     }
   
     > h2 {
+      animation: wiggly 3s;
       position: absolute;
       top: calc(50% - 2em);
       width: 100%;
