@@ -17,6 +17,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: 'users',
+        loadChildren: () =>
+          import('./@features/user/user.module')
+            .then(m => m.UserModule)  
+      },
+      {
         path: 'not-found',
         component: ErrorScreenComponent,
         data: { CODE: 404, MESSAGE: 'Page not found!' }

@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-card {
+  padding: 2em !important;
+
+  .mat-card-header-text {
+    margin: 0px;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
