@@ -13,28 +13,32 @@ All the development process and testing was done in Win 10 Home OS and Google Ch
 
 ## Setting up
 
-With Git Bash, clone this repository somewhere in your system with the following command:
+1. With Git Bash, clone this repository somewhere in your system with the following command:
 
 ```bash
 git clone https://github.com/gyohza/wdg.git
 ```
 
-Install the required packages by running:
+2. After the cloning process is finished, enter the repository's directory with:
+
+```cd wdg```
+
+3. Install the required packages by running:
 
 ```bash
 npm install
 ```
 
-Serve the application with the [Angular CLI](https://cli.angular.io/):
+4. Serve the application with the [Angular CLI](https://cli.angular.io/):
 
 ```bash
 ng serve
 ```
 
-And wait for the buildup process to complete.
+5. Wait for the buildup process to complete.
 
-The application will be served on port `4200` by default. In case of any warnings regarding this port, **make sure it's not being blocked by some other application, _especially_ another Angular app**.
+6a. You can check if the application is running properly by accessing [http://localhost:4200/].
 
-You may quit the application by pressing `Ctrl`+`C` or by exiting the terminal.
+6b. The application will be served on port `4200` by default. In case of any warnings regarding this port, **make sure it's not being blocked by some other application, _especially_ another Angular app**.
 
-You can check if the application is running properly by accessing [http://localhost:4200/].
+6c. You may quit the application by pressing `Ctrl`+`C` or by exiting the terminal.
