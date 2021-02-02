@@ -1,27 +1,40 @@
 # WdgNg
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
+A little exercise in Angular with the [ReqRes.in](https://reqres.in/) API.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To run this project you will need:
 
-## Code scaffolding
+* [Node v12.16.2](https://nodejs.org/en/blog/release/v12.16.2/) (later versions will probably work just fine);
+* [Git 2.28.0](https://git-scm.com/downloads) (also expected to work with later versions).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+All the development process and testing was done in Win 10 Home OS and Google Chrome browser, but the application is expected to work in Linux distros and other browsers. 
 
-## Build
+## Setting up
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+With Git Bash, clone this repository somewhere in your system with the following command:
 
-## Running unit tests
+```bash
+git clone https://github.com/gyohza/wdg.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install the required packages by running:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Serve the application with the [Angular CLI](https://cli.angular.io/):
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+And wait for the buildup process to complete.
+
+The application will be served on port `4200` by default. In case of any warnings regarding this port, **make sure it's not being blocked by some other application, _especially_ another Angular app**.
+
+You may quit the application by pressing `Ctrl`+`C` or by exiting the terminal.
+
+You can check if the application is running properly by accessing [http://localhost:4200/].
