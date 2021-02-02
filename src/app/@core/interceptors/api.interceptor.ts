@@ -16,9 +16,11 @@ export class ApiInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const url = new URL(`${environment.REQRES_URL}${request.url}`);
     url.searchParams.append('delay', '2');
+    const token = localStorage.getItem('wdg-token') || '';
     request = request.clone({
       url: url.toString(),
       setHeaders: {
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });
